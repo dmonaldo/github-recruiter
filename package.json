@@ -1,0 +1,22 @@
+{
+  "name": "github-recruiter",
+  "version": "1.0.0",
+  "description": "Source candidates from GitHub using the GraphQL API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "github",
+    "graphql",
+    "search",
+    "recruit",
+    "hire",
+    "headhunter"
+  ],
+  "author": "Dante Monaldo <dante.monaldo@gmail.com> (https://dantemonaldo.com)",
+  "license": "ISC",
+  "dependencies": {
+    "graphql": "^14.0.2"
+  }
+}
