@@ -4,9 +4,9 @@ let save = require('./saveSearchResults');
 
 const url = 'https://api.github.com/graphql';
 const token = 'e0883dccaab41783d748b19907748811dc2c24f1';
-const numResults = 1;
+const numResults = 10;
 
-var searchQuery = "location:Auburn language:C#";
+var searchQuery = 'location:"Buenos Aires" language:Javascript';
 let searchResults = [];
 let csv = true;
 let json = true;
@@ -46,7 +46,7 @@ let makeRequest = function(endCursor) {
         searchResults.push(...res.data.search.edges)
 
         if (res.data.search.pageInfo.hasNextPage) {
-          process.stdout.write(`Retrieved ${requestCounter} pages\r`);
+          process.stdout.write(`Retrieved ${requestCounter * numResults}/${res.data.search.userCount} users\r`);
           makeRequest(res.data.search.pageInfo.endCursor)
         } else {
           resolve();
@@ -63,5 +63,7 @@ let makeRequest = function(endCursor) {
       });
   })
 }
+
+process.stdout.write(`Searching for ${searchQuery}\n`);
 
 makeRequest();

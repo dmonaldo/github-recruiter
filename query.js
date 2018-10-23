@@ -27,13 +27,14 @@ module.exports = `
             isHireable
           }
         }
-      }
+      },
       pageInfo {
   			endCursor,
         hasNextPage,
         hasPreviousPage,
         startCursor
-      }
+      },
+      userCount
     },
     rateLimit(dryRun: false) {
   		cost,
