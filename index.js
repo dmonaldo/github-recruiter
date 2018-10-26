@@ -4,9 +4,11 @@ let save = require('./saveSearchResults');
 let config = require('./config.json');
 
 const url = 'https://api.github.com/graphql'; // GitHub GraphQL API URL
-const numResults = 10; // Number of results to return per search request
 let searchResults = []; // Stores results
 let requestCounter = 0; // Keeps track of the number of pages accessed
+
+// Number of results to return per search request
+const numResults = config.users_per_search ? config.users_per_search : 10;
 
 // Get searchQuery from command line arguments
 try {
