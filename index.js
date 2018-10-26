@@ -1,9 +1,10 @@
 let fetch = require('node-fetch');
 let query = require('./query');
 let save = require('./saveSearchResults');
+let config = require('./config.json');
 
 const url = 'https://api.github.com/graphql';
-const token = 'e0883dccaab41783d748b19907748811dc2c24f1';
+const token = config.github_auth_token;
 const numResults = 10;
 
 var searchQuery = 'location:"New York" language:Javascript repos:>=1 followers:>=1';
