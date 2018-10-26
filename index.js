@@ -9,8 +9,6 @@ const numResults = 10;
 
 var searchQuery = 'location:"New York" language:Javascript repos:>=1 followers:>=1';
 let searchResults = [];
-let csv = true;
-let json = true;
 let requestCounter = 0;
 
 // try {
@@ -54,7 +52,7 @@ let makeRequest = function(endCursor) {
           process.stdout.clearLine();
           process.stdout.write(`Retrieved ${res.data.search.userCount} users\r\n`);
 
-          if (csv) {
+          if (config.file_type == "csv") {
             // save to csv file
             save.csv(searchResults, searchQuery)
           } else {
