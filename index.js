@@ -53,7 +53,7 @@ let makeRequest = function(endCursor) {
           if (config.file_type == "csv") {
             // save to csv file
             save.csv(searchResults, searchQuery)
-          } else {
+          } else if (config.file_type == "json") {
             // save to json file
             save.json(searchResults, searchQuery)
           }
