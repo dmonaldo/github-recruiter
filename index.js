@@ -3,11 +3,10 @@ let query = require('./query');
 let save = require('./saveSearchResults');
 let config = require('./config.json');
 
-const url = 'https://api.github.com/graphql';
-const token = config.github_auth_token;
-const numResults = 10;
-let searchResults = [];
-let requestCounter = 0;
+const url = 'https://api.github.com/graphql'; // GitHub GraphQL API URL
+const numResults = 10; // Number of results to return per search request
+let searchResults = []; // Stores results
+let requestCounter = 0; // Keeps track of the number of pages accessed
 
 // Get searchQuery from command line arguments
 try {
@@ -28,7 +27,7 @@ let makeRequest = function(endCursor) {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'Authorization': `bearer ${token}`,
+        'Authorization': `bearer ${config.github_auth_token}`,
       },
       body: JSON.stringify({
         query,
