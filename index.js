@@ -48,14 +48,19 @@ let makeRequest = function(endCursor) {
         } else {
           resolve();
           process.stdout.clearLine();
-          process.stdout.write(`Retrieved ${res.data.search.userCount} users\r\n`);
 
-          if (config.file_type == "csv") {
-            // save to csv file
-            save.csv(searchResults, searchQuery)
-          } else if (config.file_type == "json") {
-            // save to json file
-            save.json(searchResults, searchQuery)
+          if (res.data.search.userCount > 0) {
+            process.stdout.write(`Retrieved ${res.data.search.userCount} users\r\n`);
+
+            if (config.file_type == "csv") {
+              // save to csv file
+              save.csv(searchResults, searchQuery)
+            } else if (config.file_type == "json") {
+              // save to json file
+              save.json(searchResults, searchQuery)
+            }
+          } else {
+            process.stdout.write(`No users that matched your search query were found.\r\n`);
           }
         }
       });
