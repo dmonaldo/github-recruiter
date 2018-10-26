@@ -6,7 +6,7 @@ const url = 'https://api.github.com/graphql';
 const token = 'e0883dccaab41783d748b19907748811dc2c24f1';
 const numResults = 10;
 
-var searchQuery = 'location:"Buenos Aires" language:Javascript';
+var searchQuery = 'location:"New York" language:Javascript repos:>=1 followers:>=1';
 let searchResults = [];
 let csv = true;
 let json = true;
@@ -50,7 +50,8 @@ let makeRequest = function(endCursor) {
           makeRequest(res.data.search.pageInfo.endCursor)
         } else {
           resolve();
-          process.stdout.write('\n');
+          process.stdout.clearLine();
+          process.stdout.write(`Retrieved ${res.data.search.userCount} users\r\n`);
 
           if (csv) {
             // save to csv file
