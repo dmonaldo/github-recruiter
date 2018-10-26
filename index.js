@@ -6,20 +6,19 @@ let config = require('./config.json');
 const url = 'https://api.github.com/graphql';
 const token = config.github_auth_token;
 const numResults = 10;
-
-var searchQuery = 'location:"New York" language:Javascript repos:>=1 followers:>=1';
 let searchResults = [];
 let requestCounter = 0;
 
-// try {
-//   if (process.argv[2])
-//     var searchQuery = process.argv[2]
-//   else
-//     throw new Error("Missing search query argument");
-// } catch(err) {
-//   console.log(err)
-//   return;
-// }
+// Get searchQuery from command line arguments
+try {
+  if (process.argv[2])
+    var searchQuery = process.argv[2];
+  else
+    throw new Error("Missing search query argument");
+} catch(err) {
+  console.log(err)
+  return;
+}
 
 let makeRequest = function(endCursor) {
   return new Promise(function(resolve, reject) {
