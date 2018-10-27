@@ -6,7 +6,12 @@ let flattenJSON = (data) => {
   let result = {};
   let recurse = (cur, prop) => {
     if (Object(cur) !== cur) {
-      result[prop] = cur;
+      if (cur && typeof cur == "string") {
+        // Remove \n and \r to protect CSV structure
+        result[prop] = cur.replace(/\n|\r/g, "");
+      } else {
+        result[prop] = cur;
+      }
     } else if (Array.isArray(cur)) {
       cur.forEach(element => {
         recurse(element, prop);
@@ -30,9 +35,9 @@ let compileRepositories = (edges) => {
   let repositoryDump = "";
   edges.forEach(edge => {
     if (edge.node.description)
-      repositoryDump += `${edge.node.name}: ${edge.node.description}\n`;
+      repositoryDump += ` - ${edge.node.name}: ${edge.node.description}`;
     else
-      repositoryDump += `${edge.node.name}\n`;
+      repositoryDump += ` - ${edge.node.name}`;
   });
   return repositoryDump;
 }
