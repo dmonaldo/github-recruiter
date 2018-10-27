@@ -9,11 +9,23 @@ module.exports = `
             bio,
             email,
             name,
-            repositories(first: 1) {
-              totalCount
+            repositories(first: 100) {
+              totalCount,
+            	edges {
+                node {
+                  name,
+                  description
+                }
+              }
             },
-            repositoriesContributedTo(first: 1) {
-              totalCount
+            repositoriesContributedTo(first: 100) {
+              totalCount,
+            	edges {
+                node {
+                  name,
+                  description
+                }
+              }
             },
             followers(first: 1) {
   						totalCount
