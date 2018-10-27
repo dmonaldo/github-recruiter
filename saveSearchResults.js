@@ -57,17 +57,17 @@ module.exports.csv = (results, query) => {
     label: 'ID',
     value: 'node.id'
   },{
+    label: 'Name',
+    value: 'node.name'
+  },{
+    label: 'Email',
+    value: 'node.email'
+  },{
     label: 'URL',
     value: 'node.url'
   },{
     label: 'Bio',
     value: 'node.bio'
-  },{
-    label: 'Email',
-    value: 'node.email'
-  },{
-    label: 'Name',
-    value: 'node.name'
   },{
     label: 'Number of Repositories',
     value: 'node.repositories.totalCount'
