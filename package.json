@@ -20,6 +20,6 @@
   "dependencies": {
     "graphql": "^14.0.2",
     "json2csv": "^4.2.1",
-    "node-fetch": "^2.2.0"
+    "node-fetch": "^2.6.1"
   }
 }
