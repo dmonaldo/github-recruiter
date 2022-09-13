@@ -28,6 +28,10 @@ All available search parameters are documented [here](https://help.github.com/en
 location:"Medellín, Colombia" repos:>1 language:JavaScript
 ```
 
+```bash
+npm start 'location:"Medellín, Colombia" repos:>1 language:JavaScript software engineer'
+```
+
 ## Roadmap
 - Improve usage documentation
 
