@@ -46,8 +46,12 @@ let compileRepositories = (edges) => {
 module.exports.csv = (results, query) => {
   // Compile repositories into a single property
   results.map(element => {
+    if (typeof element.node.repositories === 'undefined' || typeof element.node.repositoriesContributedTo === 'undefined')
+      return element
+
     element.node.repositoriesDump = compileRepositories(element.node.repositories.edges);
     element.node.repositoriesContributedToDump = compileRepositories(element.node.repositoriesContributedTo.edges);
+
     return element;
   });
 
